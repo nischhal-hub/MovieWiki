@@ -16,7 +16,7 @@ const useFetch: (query: string) => UseFetchResult = (query: string) => {
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<ErrObj>({ show: false, msg: "" })
   const [result, setResult] = useState<Movie[]>([])
-  const containsNumber = (str) => /\d/.test(str);
+  const containsNumber = (str:string) => /\d/.test(str);
   const fetchMovies = async (url: string) => {
     try{
     const resp = await axios(url);

@@ -2,9 +2,11 @@ import React from 'react'
 import { useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { useGlobalContext } from '../context';
+import useFetch from '../useFetch';
 const SingleMovie = () => {
   const { id } = useParams();
-  const { loading,error,result } = useGlobalContext();
+  const queryStr = `/movie/${id}`
+  const {loading, error, result} = useFetch(queryStr)
   return (
     <>
     <div className="background-img" style={{backgroundImage:`url(https://image.tmdb.org/t/p/w200${result.poster_path}`}}></div>

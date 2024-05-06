@@ -8,7 +8,7 @@ import { ErrObj,Movie, MovieDetails } from './interface';
 interface UseFetchResult {
   loading: boolean;
   error: ErrObj;
-  result: Movie[] | MovieDetails; 
+  result: Movie[] | any; 
 }
 
 const useFetch: (query: string) => UseFetchResult = (query: string) => {
@@ -16,14 +16,20 @@ const useFetch: (query: string) => UseFetchResult = (query: string) => {
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<ErrObj>({ show: false, msg: "" })
   const [result, setResult] = useState<Movie[]>([])
+  const containsNumber = (str) => /\d/.test(str);
   const fetchMovies = async (url: string) => {
     try{
     const resp = await axios(url);
-    console.log(url)
+    //console.log(url)
     const data = resp.data;
-    console.log(data.results)
+    //console.log(data)
+    //console.log(data.results)
       setLoading(false)
-      setResult(data.results)
+      if(containsNumber(query)){
+      setResult(data)}
+      else{
+        setResult(data.results)
+      }
   }
   catch(error:any){
     setError({ show: true, msg: `${error.response}` })

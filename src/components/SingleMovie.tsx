@@ -51,7 +51,7 @@ const SingleMovie:FC = () => {
             </div>
             <div className="controls">
               <button>Watch trailer</button>
-              <button onClick={()=>handleClick(id)}>Add to List</button>
+              <button onClick={()=>handleClick(Number(id))}>Add to List</button>
             </div>
             <div className="overview">
               <p>{overview}</p>

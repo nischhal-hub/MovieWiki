@@ -68,3 +68,8 @@ export interface Movie {
     vote_count: number;
   }
   
+  export interface Favlist{
+    id: number;
+    poster_path: string;
+    original_title:string;
+  }

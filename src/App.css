@@ -391,3 +391,80 @@
   text-align: center;
   height: 40px;
 }
+
+/*  */
+/* Mylist */
+.mylist{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+.mylist-container{
+  width: 70%;
+  /* border: 1px solid red; */
+}
+.mylist-card-container{
+  display: flex;
+  justify-content: space-around;
+}
+.mylist-card {
+  width: 100%;
+  max-width: 290px;
+  height: 90px;
+  background: #353535;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  backdrop-filter: blur(10px);
+  transition: 0.5s ease-in-out;
+  margin: 10px 0;
+}
+
+.mylist-card:hover {
+  cursor: pointer;
+  transform: scale(1.05);
+}
+
+.mylist-img {
+  width: 50px;
+  aspect-ratio: 1/1.5;
+  object-fit: cover;
+  overflow: hidden;
+  margin-left: 10px;
+  border-radius: 10px;
+  background: linear-gradient(#d7cfcf, #9198e5);
+}
+.mylist-img img {
+  width: 100%;
+  height: auto;
+}
+.mylist-card:hover > .img {
+  transition: 0.5s ease-in-out;
+  background: linear-gradient(#9198e5, #712020);
+}
+
+.mylist-textBox {
+  width: calc(100% - 80px);
+  /* border: 1px solid red; */
+  margin-left: 10px;
+  color: white;
+  font-family: "Poppins" sans-serif;
+  /* height: 50px; */
+}
+
+.mylist-textContent {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.mylist-btns{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.mylist-btns button{
+  margin: 10px;
+}

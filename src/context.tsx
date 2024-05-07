@@ -1,6 +1,7 @@
 import React, { FC, ReactNode, createContext, useContext, useState } from 'react'
 import useFetch from './useFetch'
-import { ErrObj } from './interface'
+import { ErrObj, Favlist} from './interface'
+
 type ChildrenProp = {
     children: ReactNode;
 }
@@ -15,6 +16,8 @@ type AppContextType = {
     closeModal:()=>void;
     modalData:any;
     setModalData:any;
+    favList:Favlist[];
+    setFavList: any;
 }
 
 const AppContext = createContext<AppContextType | undefined>(undefined);
@@ -24,6 +27,7 @@ const AppProvider: FC<ChildrenProp> = ({ children }) => {
     const [modalData, setModalData] = useState<null>(null)
     const [query, setQuery] = useState<string>('/movie/now_playing')
     const { loading, error, result } = useFetch(query)
+    const [favList, setFavList] = useState<Favlist[]>([])
 
     const openModal=()=>{
         setIsModalOpen(true)
@@ -33,7 +37,7 @@ const AppProvider: FC<ChildrenProp> = ({ children }) => {
     }
 
     return (
-        <AppContext.Provider value={{ query, setQuery, loading, error, result, isModalOpen, openModal, closeModal,modalData,setModalData}} >{children}</AppContext.Provider>
+        <AppContext.Provider value={{ query, setQuery, loading, error, result, isModalOpen, openModal, closeModal,modalData,setModalData ,favList,setFavList}} >{children}</AppContext.Provider>
     )
 }
 export const useGlobalContext = ():AppContextType => {

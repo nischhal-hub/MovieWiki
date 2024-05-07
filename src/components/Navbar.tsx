@@ -15,7 +15,7 @@ const Navbar: FC = () => {
                    <p> <Link to={'/'}>Home</Link></p>
                    <p><Link to={'/movies'}>Movie</Link></p>
                    <p><Link to={'/tvshows'}>TV shows</Link></p>
-                   <p>My list</p>
+                   <p><Link to={'/mylist'}>My list</Link></p>
                 </div>
                 <div className="navcontrols">
                     <button>Search</button>

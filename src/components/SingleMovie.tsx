@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 import { useParams } from 'react-router-dom'
 import useFetch from '../useFetch';
-
+import { useGlobalContext } from '../context';
 interface Genres{
   id:number;
   name:string;
@@ -12,7 +12,7 @@ const SingleMovie:FC = () => {
   const queryStr = `/movie/${id}`
   const {loading, error, result} = useFetch(queryStr)
   const {backdrop_path,poster_path,adult,genres,original_language,original_title,overview,release_date,runtime,status,vote_average,production_companies} = result
-
+  const {favList, setFavList} = useGlobalContext()
   const renderArray = (array:any) => {
     if (!array) return null; // Return null if genres is not available
     return (
@@ -24,6 +24,10 @@ const SingleMovie:FC = () => {
     );
   };
 
+  const handleClick=(id:number)=>{
+    const newList = {id:id,poster_path:poster_path, original_title:original_title }
+        setFavList([...favList, newList])
+  }
   return (
     <>
     <div className="background-img" style={{backgroundImage:`url(https://image.tmdb.org/t/p/w200${backdrop_path}`}}></div>
@@ -47,7 +51,7 @@ const SingleMovie:FC = () => {
             </div>
             <div className="controls">
               <button>Watch trailer</button>
-              <button>Add to List</button>
+              <button onClick={()=>handleClick(id)}>Add to List</button>
             </div>
             <div className="overview">
               <p>{overview}</p>

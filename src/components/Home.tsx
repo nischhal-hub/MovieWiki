@@ -8,14 +8,14 @@ import { useGlobalContext } from "../context"
 import Modal from "./Modal"
 const Home: FC = () => {
     //const [time, setTime] = useState<string>('day')
+
+    const { loading, error, result,isModalOpen } = useGlobalContext();
     //*this is for top rated sidebar
     const [trendingMov, setTrendingMov] = useState<Movie[]>([])
     const [isLoading, setIsLoading] = useState<Boolean>(true)
     const [errorHome, setErrorHome] = useState<ErrObj>({ show: false, msg: "" })
 
     const url1: string = "https://api.themoviedb.org/3/trending/movie/day?api_key=259cdbc836d938ec3d03bd4aad0b8b61&append_to_response=videos,images"
-
-    const { loading, error, result,isModalOpen } = useGlobalContext();
     const fetchTrending = async () => {
         try {
             const response = await axios(url1);
@@ -33,8 +33,7 @@ const Home: FC = () => {
         //fetchMovies();
         fetchTrending();
     }, [])
-    //* *//
-
+    
 
     return (
         <>

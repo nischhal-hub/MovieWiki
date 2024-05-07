@@ -25,7 +25,7 @@ const useFetch: (query: string) => UseFetchResult = (query: string) => {
     //console.log(data)
     //console.log(data.results)
       setLoading(false)
-      if(containsNumber(query)){
+      if(containsNumber(query.split('?')[0])){
       setResult(data)}
       else{
         setResult(data.results)
@@ -36,8 +36,7 @@ const useFetch: (query: string) => UseFetchResult = (query: string) => {
   }
   }
   useEffect(() => {
-    fetchMovies(`https://api.themoviedb.org/3${query}?api_key=259cdbc836d938ec3d03bd4aad0b8b61`)
-
+    fetchMovies(`https://api.themoviedb.org/3${query}`)
   }, [query])
   return { loading, error, result }
 }

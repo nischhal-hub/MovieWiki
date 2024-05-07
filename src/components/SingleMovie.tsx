@@ -9,7 +9,7 @@ interface Genres{
 
 const SingleMovie:FC = () => {
   const { id } = useParams();
-  const queryStr = `/movie/${id}`
+  const queryStr = `/movie/${id}?api_key=259cdbc836d938ec3d03bd4aad0b8b61`
   const {loading, error, result} = useFetch(queryStr)
   const {backdrop_path,poster_path,adult,genres,original_language,original_title,overview,release_date,runtime,status,vote_average,production_companies} = result
   const {favList, setFavList} = useGlobalContext()

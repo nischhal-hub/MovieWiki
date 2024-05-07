@@ -25,7 +25,7 @@ const AppContext = createContext<AppContextType | undefined>(undefined);
 const AppProvider: FC<ChildrenProp> = ({ children }) => {
     const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
     const [modalData, setModalData] = useState<null>(null)
-    const [query, setQuery] = useState<string>('/movie/now_playing')
+    const [query, setQuery] = useState<string>('/movie/now_playing?api_key=259cdbc836d938ec3d03bd4aad0b8b61')
     const { loading, error, result } = useFetch(query)
     const [favList, setFavList] = useState<Favlist[]>([])
 

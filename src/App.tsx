@@ -2,6 +2,7 @@ import { useState, FC } from 'react'
 import Home from './components/Home'
 import Navbar from './components/Navbar'
 import SingleMovie from './components/SingleMovie'
+import Search from './components/Search'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import './App.css'
 import Mylist from './components/Mylist'
@@ -16,6 +17,7 @@ const App: FC = () => {
             <Route path='/' element={<Home />} />
             <Route path='/movies/movie/:id' element={<SingleMovie />}/>
             <Route path='/mylist' element={<Mylist />}/>
+            <Route path='/search' element={<Search />}/>
           </Route>
         </Routes>
       </Router>

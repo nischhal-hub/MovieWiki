@@ -1,7 +1,5 @@
 import React, { FC } from 'react'
-import { useState } from 'react'
 import { useParams } from 'react-router-dom'
-import { useGlobalContext } from '../context';
 import useFetch from '../useFetch';
 
 interface Genres{
@@ -41,6 +39,7 @@ const SingleMovie:FC = () => {
               <p>{original_title}</p>
             </div>
             <h2 className='title' >{original_title}</h2>
+            <p style={{marginLeft:"5px"}}>{`${vote_average?.toFixed(1)}`}/10</p>
             <div className="movie-item">
               <p>PG-13</p>
               <p>Movie</p>

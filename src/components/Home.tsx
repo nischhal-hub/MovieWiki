@@ -5,11 +5,9 @@ import Sidebar from "./Sidebar"
 import { ErrObj } from "../interface"
 import { Movie } from "../interface"
 import { useGlobalContext } from "../context"
-
+import Modal from "./Modal"
 const Home: FC = () => {
-    const [movdata, setMovData] = useState<Movie[]>([])
     //const [time, setTime] = useState<string>('day')
-
     //*this is for top rated sidebar
     const [trendingMov, setTrendingMov] = useState<Movie[]>([])
     const [isLoading, setIsLoading] = useState<Boolean>(true)
@@ -17,7 +15,7 @@ const Home: FC = () => {
 
     const url1: string = "https://api.themoviedb.org/3/trending/movie/day?api_key=259cdbc836d938ec3d03bd4aad0b8b61&append_to_response=videos,images"
 
-    const { loading, error, result } = useGlobalContext();
+    const { loading, error, result,isModalOpen } = useGlobalContext();
     const fetchTrending = async () => {
         try {
             const response = await axios(url1);
@@ -37,6 +35,7 @@ const Home: FC = () => {
     }, [])
     //* *//
 
+
     return (
         <>
             <div className="container">
@@ -51,6 +50,8 @@ const Home: FC = () => {
                         }
                     </div>
                 </div>
+                {isModalOpen && <Modal />}
+                
                 <div className="sidebar">
                     <h4>Top rated</h4>
                     {trendingMov.map((item: Movie, index: number) => (

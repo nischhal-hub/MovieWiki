@@ -313,3 +313,81 @@
     
   }
 /*  */
+
+/*  */
+/* modal  */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: grid;
+  place-items: center;
+  transition: var(--transition);
+  visibility: hidden;
+  z-index: -1;
+}
+/* OPEN/CLOSE MODAL */
+.show-modal {
+  visibility: visible;
+  z-index: 10;
+}
+.modal-container {
+  background: rgb(19, 18, 18);
+  border-radius: 10px;
+  width: 90vw;
+  height: 60vh;
+  max-width: 800px;
+  position: relative;
+}
+.modal-container h2{
+  text-align: center;
+}
+.close-modal-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 1rem;
+  background: transparent;
+  border-color: transparent;
+  cursor: pointer;
+}
+
+.modal-details{
+  display: flex;
+}
+.modal-img{
+  width: 150px;
+  border-radius: 10px;
+  overflow: hidden;
+  aspect-ratio: 1 / 1.5;
+  margin-left: 20px ;
+}
+.modal-img img{
+  object-fit: cover;
+  width: 100%;
+}
+.modal-right-container{
+  width: 70%;
+  margin-left: 20px;
+}
+.modal-overview{
+  height: 150px;
+  /* border: 1px solid red; */
+}
+.modal-controls{
+  display: flex;
+  justify-content: space-between;
+}
+.modal-controls p{
+  background-color: #353535;
+  border-radius: 5px;
+  padding: 5px 10px;
+  text-align: center;
+}
+.modal-controls button{
+  text-align: center;
+  height: 40px;
+}

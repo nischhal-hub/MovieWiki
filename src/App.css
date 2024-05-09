@@ -10,7 +10,6 @@
   display: flex;
   justify-content: space-between;
 }
-
 .navlogo {
   display: flex;
   flex-direction: row;
@@ -30,6 +29,17 @@
 }
 /* navbar */
 /*  */
+
+/* preloader */
+.preloader{
+  height: 100vh;
+  position: fixed;
+  background: #ffffff url('./assets/Circles-menu-3.gif') no-repeat center center;
+  z-index: 100;
+  width: 100%;
+  top: 0;
+  left: 0;
+}
 
 /*  */
 /* home card */

@@ -1,9 +1,8 @@
-import React from 'react'
 import { useGlobalContext } from '../context'
 import { Link } from 'react-router-dom'
 const Modal = () => {
-  const { isModalOpen, openModal, closeModal, modalData } = useGlobalContext()
-  const { id,poster_path, original_title, overview, vote_average, media_type } = modalData;
+  const { isModalOpen, closeModal, modalData } = useGlobalContext()
+  const { id, poster_path, original_title, overview, vote_average, media_type } = modalData;
   return (
     <div className={`${isModalOpen ? "modal-overlay show-modal" : "modal-overlay"}`}>
       <div className="modal-container">

@@ -4,12 +4,15 @@ import { Movie } from '../interface';
 import { Link } from 'react-router-dom';
 import { useGlobalContext } from '../context';
 import Favlist from './Mylist';
+
 interface CardProps {
     item: Movie;
 }
+
 const Card: FC<CardProps> = ({ item }) => {
     const { id, backdrop_path, original_title, overview, release_date, vote_average,poster_path } = item;
     const {favList, setFavList} = useGlobalContext()
+    
     const handleClick = ()=>{
         const newList = {id:id,poster_path:poster_path, original_title:original_title }
         setFavList([...favList, newList])

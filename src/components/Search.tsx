@@ -1,8 +1,7 @@
-// https://api.themoviedb.org/3/search/movie&query=django&page=1?api_key=259cdbc836d938ec3d03bd4aad0b8b61
 
-import React, { ChangeEvent, useState,useEffect } from 'react'
+import { ChangeEvent, useState, useEffect } from 'react'
 import axios from 'axios'
-import { useGlobalContext } from '../context'
+
 import Card from './Card'
 import { Movie } from '../interface'
 
@@ -10,8 +9,8 @@ const Search = () => {
     const [input, setInput] = useState<string>("")
     const [query, setQuery] = useState("")
     const [result, setResult] = useState<Movie[]>([])
-    const [IsLoading,setIsLoading] = useState(true)
-    //const { setQuery, loading, error, result } = useGlobalContext();
+    const [isLoading, setIsLoading] = useState(true)
+
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         setInput(e.target.value)
     }
@@ -19,7 +18,8 @@ const Search = () => {
         const searchQuery = `/search/movie?api_key=259cdbc836d938ec3d03bd4aad0b8b61&query=${input}&page=1`
         setQuery(searchQuery)
     }
-    const fetchTrending = async (query:string) => {
+    const fetchTrending = async (query: string) => {
+        setIsLoading(true);
         try {
             const response = await axios(`https://api.themoviedb.org/3${query}`);
             const data = response.data;
@@ -45,14 +45,15 @@ const Search = () => {
                     </div>
                 </div>
                 <div className="search-result">
-                    <div className="grid_container">
-                        {result?.map((item: Movie, index: number) => (
-                            <div key={index} className="grid_item">
-                                <Card item={item} />
-                            </div>)
-                        )
-                        }
-                    </div>
+                    {isLoading ? (<div className="preloader"></div>) : (<div className="grid_container">
+                        {result?.length === 0 ? (<p>No searches found. Try another</p>) :
+                            (result?.map((item: Movie, index: number) => (
+                                <div key={index} className="grid_item">
+                                    <Card item={item} />
+                                </div>)
+                            ))}
+                    </div>)}
+
                 </div>
             </div>
         </>

@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import { FC } from 'react'
 import { useParams } from 'react-router-dom'
 import useFetch from '../useFetch';
 import { useGlobalContext } from '../context';
@@ -28,6 +28,8 @@ const SingleMovie:FC = () => {
     const newList = {id:id,poster_path:poster_path, original_title:original_title }
         setFavList([...favList, newList])
   }
+  if(loading)
+    return(<div className="preloader"></div>)
   return (
     <>
     <div className="background-img" style={{backgroundImage:`url(https://image.tmdb.org/t/p/w200${backdrop_path}`}}></div>

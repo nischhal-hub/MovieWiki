@@ -10,6 +10,8 @@ const Home: FC = () => {
     //const [time, setTime] = useState<string>('day')
 
     const { loading, error, result,isModalOpen } = useGlobalContext();
+
+
     //*this is for top rated sidebar
     const [trendingMov, setTrendingMov] = useState<Movie[]>([])
     const [isLoading, setIsLoading] = useState<Boolean>(true)
@@ -33,8 +35,10 @@ const Home: FC = () => {
         //fetchMovies();
         fetchTrending();
     }, [])
-    
-
+    //* 
+    if(loading && isLoading){
+        return <div className="preloader"></div>
+    }
     return (
         <>
             <div className="container">

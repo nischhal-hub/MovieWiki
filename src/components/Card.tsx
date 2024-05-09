@@ -14,8 +14,16 @@ const Card: FC<CardProps> = ({ item }) => {
     const {favList, setFavList} = useGlobalContext()
     
     const handleClick = ()=>{
+        console.log(checkRepeatItem(id))
+        if(checkRepeatItem(id))
+            return;
+        else{
         const newList = {id:id,poster_path:poster_path, original_title:original_title }
-        setFavList([...favList, newList])
+        setFavList([...favList, newList])}
+    }
+
+    const checkRepeatItem = (id: number) => {
+        return favList.some(x => x.id === id)
     }
     return (
         <div className="card">

@@ -25,6 +25,7 @@ const SingleMovie:FC = () => {
   };
 
   const handleClick=(id:number)=>{
+
     const newList = {id:id,poster_path:poster_path, original_title:original_title }
         setFavList([...favList, newList])
   }

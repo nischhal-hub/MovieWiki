@@ -1,4 +1,4 @@
-import React from 'react'
+
 import { useGlobalContext } from '../context'
 import { Favlist } from '../interface';
 import { Link } from 'react-router-dom';

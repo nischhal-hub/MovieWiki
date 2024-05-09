@@ -1,12 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap');
+
 #root {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 0;
+  --text: #08080a;
+  --background: #f0f0fa;
+  --primary: #002e47;
+  --secondary: #66b7a2;
+  --accent: #ac8da6;
 }
 
 /*  */
 /* navbar */
-.header {
+/* .header {
   display: flex;
   justify-content: space-between;
 }
@@ -14,13 +21,14 @@
   display: flex;
   flex-direction: row;
 }
+
 .navlogo h2 {
   margin: 10px;
 }
 .navlinks {
   display: flex;
   justify-content: space-between;
-}
+} */
 .navlinks p {
   margin: 10px;
 }
@@ -521,4 +529,23 @@
   transform: scale(1.1);
   color: rgb(255, 255, 255);
   background-color: blue;
+}
+
+
+/* custom css for tailwind */
+
+.anchorline::after{
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 12px;
+  height: 4px;
+  background-color: var(--accent);
+  transition: width .2s ease-in-out;
+  border-radius: 10px;
+}
+
+.anchorline:hover::after{
+  width: 30px;
 }

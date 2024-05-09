@@ -1,9 +1,7 @@
-import React from 'react'
 import { FC } from 'react'
 import { Movie } from '../interface';
 import { Link } from 'react-router-dom';
 import { useGlobalContext } from '../context';
-import Favlist from './Mylist';
 
 interface CardProps {
     item: Movie;
@@ -12,7 +10,6 @@ interface CardProps {
 const Card: FC<CardProps> = ({ item }) => {
     const { id, backdrop_path, original_title, overview, release_date, vote_average,poster_path } = item;
     const {favList, setFavList} = useGlobalContext()
-    
     const handleClick = ()=>{
         console.log(checkRepeatItem(id))
         if(checkRepeatItem(id))

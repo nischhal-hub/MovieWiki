@@ -4,7 +4,7 @@ const Modal = () => {
   const { isModalOpen, closeModal, modalData } = useGlobalContext()
   const { id, poster_path, original_title, overview, vote_average, media_type } = modalData;
   return (
-    <div className={`${isModalOpen ? "modal-overlay show-modal" : "modal-overlay"}`}>
+    <div>
       <div className="modal-container">
         <button className='close-modal-btn' onClick={closeModal}>X</button>
         <h2>{original_title}</h2>

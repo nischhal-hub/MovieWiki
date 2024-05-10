@@ -9,7 +9,7 @@ import Modal from "./Modal"
 const Home: FC = () => {
     //const [time, setTime] = useState<string>('day')
 
-    const { loading, error, result,isModalOpen } = useGlobalContext();
+    const { loading, error, result, isModalOpen } = useGlobalContext();
 
 
     //*this is for top rated sidebar
@@ -36,15 +36,15 @@ const Home: FC = () => {
         fetchTrending();
     }, [])
     //* 
-    if(loading && isLoading){
+    if (loading && isLoading) {
         return <div className="preloader"></div>
     }
     return (
         <>
-            <div className="container">
-                <div className="main">
-                    <h4>Movies</h4>
-                    <div className="grid_container">
+            <div className="mx-9 flex">
+                <div className="main w-9/12">
+                    <h4 className="font-playFair text-2xl font-semibold">Movies</h4>
+                    <div className="grid_container mt-6">
                         {result.map((item: Movie, index: number) => (
                             <div key={index} className="grid_item">
                                 <Card item={item} />
@@ -54,12 +54,15 @@ const Home: FC = () => {
                     </div>
                 </div>
                 {isModalOpen && <Modal />}
-                
-                <div className="sidebar">
-                    <h4>Top rated</h4>
-                    {trendingMov.map((item: Movie, index: number) => (
-                        <Sidebar key={index} item={item} />
-                    ))}
+
+                <div className="sidebar w-3/12">
+                    <h4 className="font-playFair text-2xl font-semibold">Top rated</h4>
+                    <div className="card_container mt-6">
+
+                        {trendingMov.map((item: Movie, index: number) => (
+                            <Sidebar key={index} item={item} />
+                        ))}
+                    </div>
                 </div>
             </div>
         </>

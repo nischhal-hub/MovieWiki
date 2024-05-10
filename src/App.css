@@ -29,12 +29,12 @@
   display: flex;
   justify-content: space-between;
 } */
-.navlinks p {
+/* .navlinks p {
   margin: 10px;
 }
 .navcontrols button {
   margin: 10px;
-}
+} */
 /* navbar */
 /*  */
 
@@ -51,7 +51,7 @@
 
 /*  */
 /* home card */
-.card {
+/* .card {
   --bg-card: #27272a;
   --primary: #6d28d9;
   --primary-800: #4c1d95;
@@ -158,18 +158,15 @@
   border: 2px solid hsla(262, 83%, 58%, 0.5);
   border-radius: 0.5rem;
   box-shadow: inset 0 0 0.25rem 1px var(--light);
-}
+} */
 /*  */
 
 /*  */
 /* container section */
-.container {
-  display: flex;
-}
-.main {
-  width: 80%;
+
+/* .main {
+  width: 80%;}
   /* border: 1px solid red; */
-}
 .grid_container {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));

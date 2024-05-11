@@ -1,7 +1,11 @@
-import { FC } from 'react'
+import { FC, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import useFetch from '../useFetch';
 import { useGlobalContext } from '../context';
+import { Link } from 'react-router-dom';
+import { FaStar} from "react-icons/fa";
+import {cn} from '../utils'
+
 interface Genres{
   id:number;
   name:string;
@@ -13,6 +17,8 @@ const SingleMovie:FC = () => {
   const {loading, error, result} = useFetch(queryStr)
   const {backdrop_path,poster_path,adult,genres,original_language,original_title,overview,release_date,runtime,status,vote_average,production_companies} = result
   const {favList, setFavList} = useGlobalContext()
+  const stars = Math.round(vote_average);
+    const [noOfStars, setnoOfStars] = useState(stars);
   const renderArray = (array:any) => {
     if (!array) return null; // Return null if genres is not available
     return (
@@ -34,19 +40,35 @@ const SingleMovie:FC = () => {
   return (
     <>
     <div className="background-img" style={{backgroundImage:`url(https://image.tmdb.org/t/p/w200${backdrop_path}`}}></div>
-      <div className="single-container">
-        <div className="movie-details">
-          <div className="poster">
-            <img src={`https://image.tmdb.org/t/p/w200${poster_path}`} alt={original_title} />
+      <div className="absolute top-28 flex w-100 h-4/5 text-textLight">
+        <div className="movie-details flex">
+          <div className="poster w-1/4">
+            <img src={`https://image.tmdb.org/t/p/w300${poster_path}`} alt={original_title} />
           </div>
-          <div className="details-container">
-            <div className="nav-links">
-              <p><a href="">Home</a></p> 
-              <p><a href="">Movies</a></p> 
+          <div className="details-container w-3/4 ml-6">
+            <div className="nav-links font-poppins">
+              <p><Link className='underline hover:text-accent transition .3s ease-linear' to={"/"}>Home</Link></p> 
+              <p>.</p>
+              <p><Link className='underline hover:text-accent transition .3s ease-linear' to={'/'}>Movies</Link> </p>
+              <p>.</p>
               <p>{original_title}</p>
             </div>
-            <h2 className='title' >{original_title}</h2>
-            <p style={{marginLeft:"5px"}}>{`${vote_average?.toFixed(1)}`}/10</p>
+            <h2 className='title font-playFair font-bold text-4xl'>{original_title}</h2>
+            <div className="rating flex justify-between p-1">
+                <div className="flex">
+                    {
+                        Array.from({ length: 10 }).map((_,i) => (<FaStar key={i} className={cn
+                            (
+                                i<=noOfStars && "text-accent",
+                                
+                            )}/>))
+                    }
+                   
+                </div>
+                <div className="ratings flex text-sm font-bold">
+                    <p>{vote_average.toFixed(1)}/10</p>
+                </div>
+            </div>
             <div className="movie-item">
               <p>PG-13</p>
               <p>Movie</p>

@@ -49,7 +49,7 @@ const Card: FC<CardProps> = ({ item }) => {
 
             </div>
             <div className="rating flex justify-between p-1">
-                <div className="flex">
+                <div className="flex text-textSecondary">
                     {
                         Array.from({ length: 10 }).map((_,i) => (<FaStar className={cn
                             (

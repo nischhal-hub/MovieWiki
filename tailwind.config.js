@@ -18,7 +18,8 @@ export default {
     'background': '#f0f0fa',
     'accent':'#ac8da6',
     'textDark': '#08080a',
-    'textLight': '#f0f0fa'
+    'textLight': '#f0f0fa',
+    'textSecondary': 'rgb(100 116 139)'
   }
 },
   plugins: [],

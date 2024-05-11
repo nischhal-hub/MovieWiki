@@ -334,6 +334,7 @@
   background: rgb(19, 18, 18);
   border-radius: 10px;
   width: 90vw;
+  height: 60%;
   max-width: 800px;
   position: relative;
 }
@@ -368,13 +369,14 @@
 }
 .modal-overview{
   height: 150px;
+  overflow: hidden;
   /* border: 1px solid red; */
 }
 .modal-controls{
   display: flex;
   justify-content: space-between;
 }
-bf
+
 .modal-controls button{
   text-align: center;
   height: 40px;

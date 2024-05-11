@@ -19,16 +19,14 @@ const SingleMovie:FC = () => {
   const {favList, setFavList} = useGlobalContext()
   const stars = Math.round(vote_average);
   const [noOfStars, setnoOfStars] = useState(stars);
-  const renderArray = (array:any) => {
-    if (!array) return null; // Return null if genres is not available
-    return (
-      <ul>
-        {array.map((genre:any) => (
-          <li key={genre.id}>{genre.name}</li>
-        ))}
-      </ul>
-    );
-  };
+  // const renderArray = (array:any) => {
+  //   if (!array) return null; // Return null if genres is not available
+  //   return (
+  //     <ul>
+        
+  //     </ul>
+  //   );
+  // };
 
   const handleClick=(id:number)=>{
 
@@ -84,12 +82,18 @@ const SingleMovie:FC = () => {
           </div>
         </div>
         <div className="extra-details font-poppins">
-            <p>Language: <span className='uppercase'>{original_language}</span></p>
-            <p>Release date:{release_date}</p>
-            <p>Duration:{runtime} min </p>
-            <p>Geners: {renderArray(genres)}</p>
-            <p>Production companies : {renderArray(production_companies)} </p>
-            <p>Status: {status}</p>
+            <p>Language: <span className='uppercase font-semibold'>{original_language}</span></p>
+            <p>Release date: <span className='font-semibold'>{release_date}</span> </p>
+            <p>Duration: <span className='uppercase font-semibold'>{runtime} min</span></p>
+            <p>Geners: </p>
+            <div className='flex'>{genres?.map((genre:any) => (
+          <li className='list-none bg-accent text-textDark px-1 py-2 m-1 text-sm font-light first-of-type:ml-0' key={genre.id}>{genre.name}</li>
+        ))}</div>
+            <p>Production companies :  </p>
+            <div className='flex'>{production_companies?.map((genre:any) => (
+          <li className='list-none bg-accent text-textDark px-1 py-2 m-1 text-sm font-light first-of-type:ml-0' key={genre.id}>{genre.name}</li>
+        ))}</div>
+            <p>Status: <span className='uppercase font-semibold'>{status}</span> </p>
         </div>
       </div>
     </>

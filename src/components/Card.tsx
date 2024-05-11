@@ -48,6 +48,7 @@ const Card: FC<CardProps> = ({ item }) => {
                 </div>
 
             </div>
+            <div className='p-1'>
             <div className="rating flex justify-between p-1">
                 <div className="flex text-textSecondary">
                     {
@@ -75,6 +76,7 @@ const Card: FC<CardProps> = ({ item }) => {
                 <Link className="bg-primary px-4 py-2 text-textLight text-xs rounded-lg hover:-translate-y-1 transition ease-in-out delay-150 m-2.5" to={`/movies/movie/${id}`}>
                     <span className='flex align-center'>View more</span>
                 </Link>
+            </div>
             </div>
             {/* <div className="size"
                 <span>Release date: {release_date}</span>&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;<span style={{ fontWeight: "800" }}>{vote_average?.toFixed(1)}/10</span><br />

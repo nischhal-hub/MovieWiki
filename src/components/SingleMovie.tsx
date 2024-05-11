@@ -18,7 +18,7 @@ const SingleMovie:FC = () => {
   const {backdrop_path,poster_path,adult,genres,original_language,original_title,overview,release_date,runtime,status,vote_average,production_companies} = result
   const {favList, setFavList} = useGlobalContext()
   const stars = Math.round(vote_average);
-    const [noOfStars, setnoOfStars] = useState(stars);
+  const [noOfStars, setnoOfStars] = useState(stars);
   const renderArray = (array:any) => {
     if (!array) return null; // Return null if genres is not available
     return (
@@ -40,7 +40,7 @@ const SingleMovie:FC = () => {
   return (
     <>
     <div className="background-img" style={{backgroundImage:`url(https://image.tmdb.org/t/p/w200${backdrop_path}`}}></div>
-      <div className="absolute top-28 flex w-100 h-4/5 text-textLight">
+      <div className="absolute top-28 w-100 h-4/5 text-textLight flex justify-center items-center bg-transparentBg">
         <div className="movie-details flex">
           <div className="poster w-1/4">
             <img src={`https://image.tmdb.org/t/p/w300${poster_path}`} alt={original_title} />
@@ -54,7 +54,7 @@ const SingleMovie:FC = () => {
               <p>{original_title}</p>
             </div>
             <h2 className='title font-playFair font-bold text-4xl'>{original_title}</h2>
-            <div className="rating flex justify-between p-1">
+            <div className="rating flex justify-start p-1">
                 <div className="flex">
                     {
                         Array.from({ length: 10 }).map((_,i) => (<FaStar key={i} className={cn
@@ -65,26 +65,26 @@ const SingleMovie:FC = () => {
                     }
                    
                 </div>
-                <div className="ratings flex text-sm font-bold">
+                <div className="ratings flex text-sm font-bold pl-3">
                     <p>{vote_average.toFixed(1)}/10</p>
                 </div>
             </div>
-            <div className="movie-item">
-              <p>PG-13</p>
-              <p>Movie</p>
-              <p>{runtime} m</p>
+            <div className="movie-item font-poppins">
+              <p className='bg-primary p-1'>PG-13</p>
+              <p className='bg-secondary p-1 text-textDark'>Movie</p>
+              <p className='bg-accent p-1 text-textDark'>{runtime} m</p>
             </div>
-            <div className="controls">
-              <button>Watch trailer</button>
-              <button onClick={()=>handleClick(Number(id))}>Add to List</button>
+            <div className="controls font-poppins">
+              <button className='bg-secondary text-textDark px-4 py-2'>Watch trailer</button>
+              <button className='bg-accent text-textDark px-4 py-2 hover:-translate-y-1 transition .3s ease-linear' onClick={()=>handleClick(Number(id))}>Add to List</button>
             </div>
-            <div className="overview">
+            <div className="overview font-poppins">
               <p>{overview}</p>
             </div>
           </div>
         </div>
-        <div className="extra-details">
-            <p>Language:{original_language}</p>
+        <div className="extra-details font-poppins">
+            <p>Language: <span className='uppercase'>{original_language}</span></p>
             <p>Release date:{release_date}</p>
             <p>Duration:{runtime} min </p>
             <p>Geners: {renderArray(genres)}</p>

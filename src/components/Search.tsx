@@ -44,7 +44,8 @@ const Search = () => {
                         <button type="submit" onClick={() => handleClick()}>Go</button>
                     </div>
                 </div>
-                <div className="search-result">
+                <div className="search-result  border-2 border-solid border-black">
+                   
                     {isLoading ? (<div className="preloader"></div>) : (<div className="grid_container">
                         {result?.length === 0 ? (<p>No searches found. Try another</p>) :
                             (result?.map((item: Movie, index: number) => (
@@ -53,7 +54,7 @@ const Search = () => {
                                 </div>)
                             ))}
                     </div>)}
-
+                    
                 </div>
             </div>
         </>

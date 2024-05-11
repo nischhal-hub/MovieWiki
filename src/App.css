@@ -282,15 +282,15 @@
   }
   .movie-details{
     width: 75%;
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0, 0.4); /* Black w/opacity/see-through */
+    /* background-color: rgb(0,0,0); Fallback color */
+    /* background-color: rgba(0,0,0, 0.4); Black w/opacity/see-through */
     /* border: 3px solid #f1f1f1; */
     padding: 20px;
   }
   .extra-details{
     width: 25%;
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0, 0.4); /* Black w/opacity/see-through */
+    /* background-color: rgb(0,0,0); Fallback color */
+    /* background-color: rgba(0,0,0, 0.4); Black w/opacity/see-through */
     color: white;
     /* border: 3px solid #f1f1f1; */
     padding: 20px;
@@ -482,7 +482,7 @@ bf
 }
 
 .search button[type="submit"] {
-  background-color: #4e99e9;
+  background-color: var(--primary);
   border: none;
   color: #fff;
   cursor: pointer;
@@ -498,7 +498,7 @@ bf
 .search button[type="submit"]:hover {
   transform: scale(1.1);
   color: rgb(255, 255, 255);
-  background-color: blue;
+  background-color: var(--accent);
 }
 
 

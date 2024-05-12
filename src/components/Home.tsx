@@ -2,6 +2,7 @@ import { FC, useEffect, useState } from "react"
 import axios from "axios"
 import Card from "./Card"
 import Sidebar from "./Sidebar"
+import Popup from './Popup'
 import { ErrObj } from "../interface"
 import { Movie } from "../interface"
 import { useGlobalContext } from "../context"
@@ -9,7 +10,7 @@ import Modal from "./Modal"
 const Home: FC = () => {
     //const [time, setTime] = useState<string>('day')
 
-    const { loading, error, result, isModalOpen } = useGlobalContext();
+    const { loading, error, result, isModalOpen,popUp,setPopUp } = useGlobalContext();
 
 
     //*this is for top rated sidebar
@@ -41,6 +42,7 @@ const Home: FC = () => {
     }
     return (
         <>
+        {popUp.visible && <Popup />}
             <div className="mx-9 flex">
                 <div className="main w-9/12">
                     <h4 className="font-playFair text-2xl font-semibold">Movies</h4>

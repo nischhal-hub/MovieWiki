@@ -1,6 +1,6 @@
 import React, { FC, ReactNode, createContext, useContext, useState } from 'react'
 import useFetch from './useFetch'
-import { ErrObj, Favlist} from './interface'
+import { ErrObj, Favlist, Popup} from './interface'
 
 type ChildrenProp = {
     children: ReactNode;
@@ -18,6 +18,8 @@ type AppContextType = {
     setModalData:any;
     favList:Favlist[];
     setFavList: any;
+    popUp:Popup;
+    setPopUp:any;
 }
 
 const AppContext = createContext<AppContextType | undefined>(undefined);
@@ -26,9 +28,10 @@ const AppProvider: FC<ChildrenProp> = ({ children }) => {
     const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
     const [modalData, setModalData] = useState<null>(null)
     const [query, setQuery] = useState<string>('/movie/now_playing?api_key=259cdbc836d938ec3d03bd4aad0b8b61')
-    const { loading, error, result } = useFetch(query)
     const [favList, setFavList] = useState<Favlist[]>([])
-
+    const [popUp, setPopUp] = useState<Popup>({visible:false, type:"",msg:""})
+    
+    const { loading, error, result } = useFetch(query)
     const openModal=()=>{
         setIsModalOpen(true)
     }
@@ -37,7 +40,7 @@ const AppProvider: FC<ChildrenProp> = ({ children }) => {
     }
 
     return (
-        <AppContext.Provider value={{ query, setQuery, loading, error, result, isModalOpen, openModal, closeModal,modalData,setModalData ,favList,setFavList}} >{children}</AppContext.Provider>
+        <AppContext.Provider value={{ query, setQuery, loading, error, result, isModalOpen, openModal, closeModal,modalData,setModalData ,favList,setFavList, popUp, setPopUp}} >{children}</AppContext.Provider>
     )
 }
 export const useGlobalContext = ():AppContextType => {

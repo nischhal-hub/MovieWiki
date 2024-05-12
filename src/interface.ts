@@ -73,3 +73,9 @@ export interface Movie {
     poster_path: string;
     original_title:string;
   }
+
+  export interface Popup{
+    visible:boolean;
+    type:string;
+    msg:string;
+  }

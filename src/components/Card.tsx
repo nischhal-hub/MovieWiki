@@ -11,16 +11,17 @@ interface CardProps {
 
 const Card: FC<CardProps> = ({ item }) => {
     const { id, backdrop_path, original_title, overview, release_date, vote_average, poster_path } = item;
-    const { favList, setFavList } = useGlobalContext()
+    const { favList, setFavList, setPopUp} = useGlobalContext()
     const stars = Math.round(vote_average);
     const [noOfStars, setnoOfStars] = useState(stars);
     const handleClick = () => {
         console.log(checkRepeatItem(id))
         if (checkRepeatItem(id))
-            return;
+            setPopUp({visible:true, type:"info",msg:"Movie is already on the list."})
         else {
             const newList = { id: id, poster_path: poster_path, original_title: original_title }
             setFavList([...favList, newList])
+            setPopUp({visible:true, type:"add",msg:"Movie added to the list."})
         }
     }
 

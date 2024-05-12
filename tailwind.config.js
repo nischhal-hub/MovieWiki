@@ -20,7 +20,8 @@ export default {
     'textDark': '#08080a',
     'textLight': '#f0f0fa',
     'textSecondary': 'rgb(100 116 139)',
-    'transparentBg' : 'rgba(0,0,0, 0.4)'
+    'transparentBg' : 'rgba(0,0,0, 0.4)',
+    'deleteRed' : 'rgb(220 38 38)'
   }
 },
   plugins: [],

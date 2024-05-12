@@ -5,7 +5,7 @@ import { useGlobalContext } from '../context';
 import { Link } from 'react-router-dom';
 import { FaStar} from "react-icons/fa";
 import {cn} from '../utils'
-
+import Popup from './Popup';
 interface Genres{
   id:number;
   name:string;
@@ -16,7 +16,7 @@ const SingleMovie:FC = () => {
   const queryStr = `/movie/${id}?api_key=259cdbc836d938ec3d03bd4aad0b8b61`
   const {loading, error, result} = useFetch(queryStr)
   const {backdrop_path,poster_path,adult,genres,original_language,original_title,overview,release_date,runtime,status,vote_average,production_companies} = result
-  const {favList, setFavList} = useGlobalContext()
+  const {favList, setFavList, setPopUp,popUp} = useGlobalContext()
   const stars = Math.round(vote_average);
   const [noOfStars, setnoOfStars] = useState(stars);
   // const renderArray = (array:any) => {
@@ -32,11 +32,13 @@ const SingleMovie:FC = () => {
 
     const newList = {id:id,poster_path:poster_path, original_title:original_title }
         setFavList([...favList, newList])
+        setPopUp({visible:true, type:"add",msg:"Movie added to the list."})
   }
   if(loading)
     return(<div className="preloader"></div>)
   return (
     <>
+    {popUp.visible && <Popup />}
     <div className="background-img" style={{backgroundImage:`url(https://image.tmdb.org/t/p/w200${backdrop_path}`}}></div>
       <div className="absolute top-28 w-100 h-4/5 text-textLight flex justify-center items-center bg-transparentBg">
         <div className="movie-details flex">
